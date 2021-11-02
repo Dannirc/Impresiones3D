@@ -29,7 +29,7 @@ public class PresupuestoServicio {
 	
 	@Transactional
 	public void modificarPresupuesto(String id, Pedido pedido, Float precio, Integer plazoEntrega) throws Exception {
-		Optional<Presupuesto> respuesta = PresupuestoRepositorio.findById(id);
+		Optional<Presupuesto> respuesta = presupuestoRepositorio.findById(id);
 		if (respuesta.isPresent()) {
 			Presupuesto presupuesto = respuesta.get();
 			presupuesto.setId(id);
