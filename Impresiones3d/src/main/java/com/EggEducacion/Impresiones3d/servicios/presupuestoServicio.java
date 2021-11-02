@@ -9,13 +9,13 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.EggEducacion.Impresiones3d.entidades.Pedido;
 import com.EggEducacion.Impresiones3d.entidades.Presupuesto;
-import com.EggEducacion.Impresiones3d.repositorios.presupuestoRepositorio;
+import com.EggEducacion.Impresiones3d.repositorios.PresupuestoRepositorio;
 
 
 @Service
-public class presupuestoServicio {
+public class PresupuestoServicio {
 	@Autowired
-	private presupuestoRepositorio presupuestoRepositorio;
+	private PresupuestoRepositorio PresupuestoRepositorio;
 	
 	
 	@Transactional
@@ -24,18 +24,18 @@ public class presupuestoServicio {
 		presupuesto.setId(id);
 		presupuesto.setPedido(pedido);
 		presupuesto.setPrecio(precio);
-		return presupuestoRepositorio.save(presupuesto);
+		return PresupuestoRepositorio.save(presupuesto);
 	}
 	
 	@Transactional
 	public void modificarPresupuesto(String id, Pedido pedido, Float precio, Integer plazoEntrega) throws Exception {
-		Optional<Presupuesto> respuesta = presupuestoRepositorio.findById(id);
+		Optional<Presupuesto> respuesta = PresupuestoRepositorio.findById(id);
 		if (respuesta.isPresent()) {
 			Presupuesto presupuesto = respuesta.get();
 			presupuesto.setId(id);
 			presupuesto.setPedido(pedido);
 			presupuesto.setPrecio(precio);
-			presupuestoRepositorio.save(presupuesto);
+			PresupuestoRepositorio.save(presupuesto);
 		} else {
 			throw new Exception("error en el modificar-presupuesto");
 		}
@@ -43,7 +43,7 @@ public class presupuestoServicio {
 	
 	@Transactional
 	public List<Presupuesto> listarTodos() {
-		return presupuestoRepositorio.findAll();
+		return PresupuestoRepositorio.findAll();
 	}
 	
 }

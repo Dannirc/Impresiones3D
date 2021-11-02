@@ -11,13 +11,13 @@ import org.springframework.web.multipart.MultipartFile;
 import com.EggEducacion.Impresiones3d.entidades.Archivo;
 import com.EggEducacion.Impresiones3d.entidades.Categoria;
 import com.EggEducacion.Impresiones3d.entidades.Producto;
-import com.EggEducacion.Impresiones3d.repositorios.productoRepositorio;
+import com.EggEducacion.Impresiones3d.repositorios.ProductoRepositorio;
 
 
 @Service
-public class productoServicio {
+public class ProductoServicio {
 	@Autowired
-	private productoRepositorio productoRepositorio;
+	private ProductoRepositorio ProductoRepositorio;
 	
 	@Autowired
 	private ArchivoServicio archivoServicio;
@@ -29,12 +29,12 @@ public class productoServicio {
 		producto.setCategoria(categoria);
 		Archivo archivo = archivoServicio.guardar(file);
 		producto.setArchivo(archivo);
-		return productoRepositorio.save(producto);
+		return ProductoRepositorio.save(producto);
 	}
 	
 	@Transactional
 	public void modificarProducto(MultipartFile file,String id, Categoria categoria) throws Exception {
-		Optional<Producto> respuesta = productoRepositorio.findById(id);
+		Optional<Producto> respuesta = ProductoRepositorio.findById(id);
 		if (respuesta.isPresent()) {
 			Producto producto = respuesta.get();
 			producto.setId(id);
@@ -46,7 +46,7 @@ public class productoServicio {
 			}
 			Archivo archivo = archivoServicio.actualizar(idArchivo,file);
 			producto.setArchivo(archivo);
-			productoRepositorio.save(producto);
+			ProductoRepositorio.save(producto);
 		} else {
 			throw new Exception("error en el modificar-producto");
 		}
@@ -54,7 +54,7 @@ public class productoServicio {
 	
 	@Transactional
 	public List<Producto> listarTodos() {
-		return productoRepositorio.findAll();
+		return ProductoRepositorio.findAll();
 	}
 	
 }

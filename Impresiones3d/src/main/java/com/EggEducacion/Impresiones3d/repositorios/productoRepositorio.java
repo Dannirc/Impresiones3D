@@ -6,7 +6,7 @@ import org.springframework.stereotype.Repository;
 import com.EggEducacion.Impresiones3d.entidades.Producto;
 
 @Repository
-public interface productoRepositorio extends JpaRepository<Producto, String> {
+public interface ProductoRepositorio extends JpaRepository<Producto, String> {
 
 }
 

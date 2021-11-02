@@ -7,6 +7,6 @@ import com.EggEducacion.Impresiones3d.entidades.Presupuesto;
 
 
 @Repository
-public interface presupuestoRepositorio extends JpaRepository<Presupuesto, String> {
+public interface PresupuestoRepositorio extends JpaRepository<Presupuesto, String> {
 
 }

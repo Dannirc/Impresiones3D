@@ -7,6 +7,6 @@ import com.EggEducacion.Impresiones3d.entidades.Archivo;
 
 
 @Repository
-public interface archivoRepositorio extends JpaRepository<Archivo, String> {
+public interface ArchivoRepositorio extends JpaRepository<Archivo, String> {
 
 }

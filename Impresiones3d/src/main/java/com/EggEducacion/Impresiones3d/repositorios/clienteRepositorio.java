@@ -7,6 +7,6 @@ import com.EggEducacion.Impresiones3d.entidades.Cliente;
 
 
 @Repository
-public interface clienteRepositorio extends JpaRepository<Cliente, String> {
+public interface ClienteRepositorio extends JpaRepository<Cliente, String> {
 
 }

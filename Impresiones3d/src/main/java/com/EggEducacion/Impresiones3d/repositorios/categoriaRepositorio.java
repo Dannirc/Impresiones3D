@@ -7,6 +7,6 @@ import com.EggEducacion.Impresiones3d.entidades.Categoria;
 
 
 @Repository
-public interface categoriaRepositorio extends JpaRepository<Categoria, String> {
+public interface CategoriaRepositorio extends JpaRepository<Categoria, String> {
 
 }

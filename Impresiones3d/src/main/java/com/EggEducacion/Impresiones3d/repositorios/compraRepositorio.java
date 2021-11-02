@@ -7,6 +7,6 @@ import com.EggEducacion.Impresiones3d.entidades.Compra;
 
 
 @Repository
-public interface compraRepositorio extends JpaRepository<Compra, String> {
+public interface CompraRepositorio extends JpaRepository<Compra, String> {
 
 }

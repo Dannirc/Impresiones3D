@@ -1,5 +1,5 @@
 package com.EggEducacion.Impresiones3d.entidades;
 
-public class prueba {
+public class Prueba {
 
 }

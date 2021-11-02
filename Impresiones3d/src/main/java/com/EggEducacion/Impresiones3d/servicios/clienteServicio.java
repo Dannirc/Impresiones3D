@@ -8,13 +8,13 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.EggEducacion.Impresiones3d.entidades.Cliente;
-import com.EggEducacion.Impresiones3d.repositorios.clienteRepositorio;
+import com.EggEducacion.Impresiones3d.repositorios.ClienteRepositorio;
 
 
 @Service
-public class clienteServicio {
+public class ClienteServicio {
 	@Autowired
-	private clienteRepositorio clienteRepositorio;
+	private ClienteRepositorio ClienteRepositorio;
 	
 	
 	@Transactional
@@ -26,12 +26,12 @@ public class clienteServicio {
 		cliente.setDireccion(direccion);
 		cliente.setTelefono(telefono);
 		cliente.setEmail(email);
-		return clienteRepositorio.save(cliente);
+		return ClienteRepositorio.save(cliente);
 	}
 	
 	@Transactional
 	public void modificarCliente(String id, String nombre, String direccion, String email, String telefono, String clave) throws Exception {
-		Optional<Cliente> respuesta = clienteRepositorio.findById(id);
+		Optional<Cliente> respuesta = ClienteRepositorio.findById(id);
 		if (respuesta.isPresent()) {
 			Cliente cliente = respuesta.get();
 			cliente.setId(id);
@@ -40,7 +40,7 @@ public class clienteServicio {
 			cliente.setDireccion(direccion);
 			cliente.setTelefono(telefono);
 			cliente.setEmail(email);
-			clienteRepositorio.save(cliente);
+			ClienteRepositorio.save(cliente);
 		} else {
 			throw new Exception("error en el modificar-cliente");
 		}
@@ -48,7 +48,7 @@ public class clienteServicio {
 	
 	@Transactional
 	public List<Cliente> listarTodos() {
-		return clienteRepositorio.findAll();
+		return ClienteRepositorio.findAll();
 	}
 	
 }
