@@ -9,13 +9,13 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.EggEducacion.Impresiones3d.entidades.Compra;
 import com.EggEducacion.Impresiones3d.entidades.Presupuesto;
-import com.EggEducacion.Impresiones3d.repositorios.compraRepositorio;
+import com.EggEducacion.Impresiones3d.repositorios.CompraRepositorio;
 
 
 @Service
-public class compraServicio {
+public class CompraServicio {
 	@Autowired
-	private compraRepositorio CompraRepositorio;
+	private CompraRepositorio CompraRepositorio;
 	
 	
 	@Transactional

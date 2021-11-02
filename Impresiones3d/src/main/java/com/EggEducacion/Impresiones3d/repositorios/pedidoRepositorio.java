@@ -7,6 +7,6 @@ import com.EggEducacion.Impresiones3d.entidades.Pedido;
 
 
 @Repository
-public interface pedidoRepositorio extends JpaRepository<Pedido, String> {
+public interface PedidoRepositorio extends JpaRepository<Pedido, String> {
 
 }

@@ -8,12 +8,12 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.EggEducacion.Impresiones3d.entidades.Categoria;
-import com.EggEducacion.Impresiones3d.repositorios.categoriaRepositorio;
+import com.EggEducacion.Impresiones3d.repositorios.CategoriaRepositorio;
 
 @Service
-public class categoriaServicio {
+public class CategoriaServicio {
 	@Autowired
-	private categoriaRepositorio CategoriaRepositorio;
+	private CategoriaRepositorio CategoriaRepositorio;
 
 	@Transactional
 	public Categoria crearCategoria(String id, String nombre, Integer porcentajeDeRelleno,

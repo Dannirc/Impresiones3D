@@ -7,13 +7,13 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.EggEducacion.Impresiones3d.entidades.Archivo;
-import com.EggEducacion.Impresiones3d.repositorios.archivoRepositorio;
+import com.EggEducacion.Impresiones3d.repositorios.ArchivoRepositorio;
 
 @Service
 public class ArchivoServicio {
 
 	@Autowired
-	private archivoRepositorio archivoRepositorio;
+	private ArchivoRepositorio ArchivoRepositorio;
 
 	public Archivo guardar(MultipartFile file) throws Exception {
 		try {
@@ -22,7 +22,7 @@ public class ArchivoServicio {
 				archivo.setMime(file.getContentType());
 				archivo.setNombre(file.getName());
 				archivo.setContenido(file.getBytes());
-				return archivoRepositorio.save(archivo);
+				return ArchivoRepositorio.save(archivo);
 			}
 		} catch (Exception e) {
 			System.err.println(e.getMessage());
@@ -35,7 +35,7 @@ public class ArchivoServicio {
 			try {
 				Archivo archivo = new Archivo();
 				if (idArchivo != null) {
-					Optional<Archivo> respuesta = archivoRepositorio.findById(idArchivo);
+					Optional<Archivo> respuesta = ArchivoRepositorio.findById(idArchivo);
 					if (respuesta.isPresent()) {
 						archivo = respuesta.get();
 					}
@@ -43,7 +43,7 @@ public class ArchivoServicio {
 				archivo.setMime(file.getContentType());
 				archivo.setNombre(file.getName());
 				archivo.setContenido(file.getBytes());
-				return archivoRepositorio.save(archivo);
+				return ArchivoRepositorio.save(archivo);
 			} catch (Exception e) {
 				System.err.println(e.getMessage());
 			}
