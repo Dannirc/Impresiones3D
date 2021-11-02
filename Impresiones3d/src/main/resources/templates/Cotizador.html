@@ -120,27 +120,87 @@
 			</div>
 		</div>
 	</div>
-
 	
 	<center style="margin-top: 30px;">
-		<a style="text-decoration:none; padding:10px 15px; border-radius: 5px; color:indigo; background-color:lightsteelblue; font-size: 15px;"
-			href="/Cotizador">Cotiza tu archivo 3D</a>
-		<a style=" text-decoration:none; padding:10px 15px; border-radius: 5px;color:indigo; background-color:lightsteelblue; font-size: 15px;"
-			href="/Autor/Editar">Instructivo para principiantes</a>
-		<a style=" text-decoration:none; padding:10px 15px; border-radius: 5px;color:indigo; background-color:lightsteelblue; font-size: 15px;"
-			href="/Autor/Eliminar">Tienda</a>
+	
+	
+		<div>
+		  <label for="Material"> Material </label> <br>
+        <select name="Material" id="Lista de materiales">
+            <option value="pla"> pla</option>
+            <option value="abs"> abs</option>
+            <option value="petg"> petg</option>
+            <option value="nylon"> nylon</option>            
+            </select>
+        <br>
+	</div>
+	
+	
+		<div>
+		  <label for="pais"> Diámetro de boquilla </label> <br>
+        <select name="Pais" id="lista de paises">
+            <option value="0.4"> 0.4mm</option>
+            <option value="0.2"> 0.2mm</option>
+            <option value="0.6"> 0.6mm</option>
+            <option value="0.8"> 0.8mm</option>            
+            </select>
+        <br>
+	</div>
+	
+	<div>
+		  <label for="pais"> velocidad de impresión </label> <br>
+        <select name="Pais" id="lista de paises">
+            <option value="30"> 30mm/seg</option>
+            <option value="35"> 35mm/seg</option>
+            <option value="40"> 40mm/seg</option>
+            <option value="45"> 45mm/seg</option>
+            <option value="50"> 50mm/seg</option>
+            <option value="55"> 55mm/seg</option>
+            <option value="60"> 60mm/seg</option>                       
+            </select>
+        <br>
+	</div>
+	
+	 <div>
+            <label for="porcentaje"> Porcentaje de relleno</label>
+            <br>
+            <input type="text" name="Porcentaje de relleno">
+        </div>
+        
+        <div>
+            <label for="Altura"> Altura de capa</label>
+            <br>
+            <input type="Altura" name="Altura">
+        </div>
+        
+         <div>
+            <label for="Soporte"> Soporte</label>
+            
+            <br>
+            <label for="radio"> Si</label>
+            <input type="radio" name="Soporte" value="si" si>           
+            <br>
+            <label for="radio"> No </label>
+            <input type="radio" name="Soporte" value="no" no>
+             <br>
+           
+        </div>
+	
+	
 	</center>
 	
 	</div>
-
-
-<script>
-// Add the following code if you want the name of the file appear on select
-$(".custom-file-input").on("change", function() {
-  var fileName = $(this).val().split("\\").pop();
-  $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
-});
-</script>
-</body>	
+	
+	
+</body>
+<div class="container">
+		<!-- (p>lorem)*20 (código a usar si tienes instalada la extensión emmet)-->
+	</div>
+	<div class="social">
+		<a href="#"><img src="../Images/facebook.png" alt="facebook"></a>
+		<a href="#"><img src="img/youtube.png" alt="youtube"></a>
+		<a href="#"><img src="img/linkedin.png" alt="linkedin"></a>
+		<a href="#"><img src="img/instagram.png" alt="instagram"></a>
+	</div>
 
 </html>
