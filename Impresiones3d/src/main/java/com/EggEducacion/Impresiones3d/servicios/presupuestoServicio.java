@@ -15,7 +15,7 @@ import com.EggEducacion.Impresiones3d.repositorios.PresupuestoRepositorio;
 @Service
 public class PresupuestoServicio {
 	@Autowired
-	private PresupuestoRepositorio PresupuestoRepositorio;
+	private PresupuestoRepositorio presupuestoRepositorio;
 	
 	
 	@Transactional
@@ -24,7 +24,7 @@ public class PresupuestoServicio {
 		presupuesto.setId(id);
 		presupuesto.setPedido(pedido);
 		presupuesto.setPrecio(precio);
-		return PresupuestoRepositorio.save(presupuesto);
+		return presupuestoRepositorio.save(presupuesto);
 	}
 	
 	@Transactional
@@ -35,7 +35,7 @@ public class PresupuestoServicio {
 			presupuesto.setId(id);
 			presupuesto.setPedido(pedido);
 			presupuesto.setPrecio(precio);
-			PresupuestoRepositorio.save(presupuesto);
+			presupuestoRepositorio.save(presupuesto);
 		} else {
 			throw new Exception("error en el modificar-presupuesto");
 		}
@@ -43,7 +43,7 @@ public class PresupuestoServicio {
 	
 	@Transactional
 	public List<Presupuesto> listarTodos() {
-		return PresupuestoRepositorio.findAll();
+		return presupuestoRepositorio.findAll();
 	}
 	
 }

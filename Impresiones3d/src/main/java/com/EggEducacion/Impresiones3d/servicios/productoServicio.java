@@ -17,7 +17,7 @@ import com.EggEducacion.Impresiones3d.repositorios.ProductoRepositorio;
 @Service
 public class ProductoServicio {
 	@Autowired
-	private ProductoRepositorio ProductoRepositorio;
+	private ProductoRepositorio productoRepositorio;
 	
 	@Autowired
 	private ArchivoServicio archivoServicio;
@@ -29,12 +29,12 @@ public class ProductoServicio {
 		producto.setCategoria(categoria);
 		Archivo archivo = archivoServicio.guardar(file);
 		producto.setArchivo(archivo);
-		return ProductoRepositorio.save(producto);
+		return productoRepositorio.save(producto);
 	}
 	
 	@Transactional
 	public void modificarProducto(MultipartFile file,String id, Categoria categoria) throws Exception {
-		Optional<Producto> respuesta = ProductoRepositorio.findById(id);
+		Optional<Producto> respuesta = productoRepositorio.findById(id);
 		if (respuesta.isPresent()) {
 			Producto producto = respuesta.get();
 			producto.setId(id);
@@ -46,7 +46,7 @@ public class ProductoServicio {
 			}
 			Archivo archivo = archivoServicio.actualizar(idArchivo,file);
 			producto.setArchivo(archivo);
-			ProductoRepositorio.save(producto);
+			productoRepositorio.save(producto);
 		} else {
 			throw new Exception("error en el modificar-producto");
 		}
@@ -54,7 +54,7 @@ public class ProductoServicio {
 	
 	@Transactional
 	public List<Producto> listarTodos() {
-		return ProductoRepositorio.findAll();
+		return productoRepositorio.findAll();
 	}
 	
 }

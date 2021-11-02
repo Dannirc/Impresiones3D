@@ -13,7 +13,7 @@ import com.EggEducacion.Impresiones3d.repositorios.ArchivoRepositorio;
 public class ArchivoServicio {
 
 	@Autowired
-	private ArchivoRepositorio ArchivoRepositorio;
+	private ArchivoRepositorio archivoRepositorio;
 
 	public Archivo guardar(MultipartFile file) throws Exception {
 		try {
@@ -22,7 +22,7 @@ public class ArchivoServicio {
 				archivo.setMime(file.getContentType());
 				archivo.setNombre(file.getName());
 				archivo.setContenido(file.getBytes());
-				return ArchivoRepositorio.save(archivo);
+				return archivoRepositorio.save(archivo);
 			}
 		} catch (Exception e) {
 			System.err.println(e.getMessage());
@@ -35,7 +35,7 @@ public class ArchivoServicio {
 			try {
 				Archivo archivo = new Archivo();
 				if (idArchivo != null) {
-					Optional<Archivo> respuesta = ArchivoRepositorio.findById(idArchivo);
+					Optional<Archivo> respuesta = archivoRepositorio.findById(idArchivo);
 					if (respuesta.isPresent()) {
 						archivo = respuesta.get();
 					}
@@ -43,7 +43,7 @@ public class ArchivoServicio {
 				archivo.setMime(file.getContentType());
 				archivo.setNombre(file.getName());
 				archivo.setContenido(file.getBytes());
-				return ArchivoRepositorio.save(archivo);
+				return archivoRepositorio.save(archivo);
 			} catch (Exception e) {
 				System.err.println(e.getMessage());
 			}

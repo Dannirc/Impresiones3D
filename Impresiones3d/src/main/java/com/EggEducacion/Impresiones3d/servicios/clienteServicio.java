@@ -14,7 +14,7 @@ import com.EggEducacion.Impresiones3d.repositorios.ClienteRepositorio;
 @Service
 public class ClienteServicio {
 	@Autowired
-	private ClienteRepositorio ClienteRepositorio;
+	private ClienteRepositorio clienteRepositorio;
 	
 	
 	@Transactional
@@ -26,12 +26,12 @@ public class ClienteServicio {
 		cliente.setDireccion(direccion);
 		cliente.setTelefono(telefono);
 		cliente.setEmail(email);
-		return ClienteRepositorio.save(cliente);
+		return clienteRepositorio.save(cliente);
 	}
 	
 	@Transactional
 	public void modificarCliente(String id, String nombre, String direccion, String email, String telefono, String clave) throws Exception {
-		Optional<Cliente> respuesta = ClienteRepositorio.findById(id);
+		Optional<Cliente> respuesta = clienteRepositorio.findById(id);
 		if (respuesta.isPresent()) {
 			Cliente cliente = respuesta.get();
 			cliente.setId(id);
@@ -40,7 +40,7 @@ public class ClienteServicio {
 			cliente.setDireccion(direccion);
 			cliente.setTelefono(telefono);
 			cliente.setEmail(email);
-			ClienteRepositorio.save(cliente);
+			clienteRepositorio.save(cliente);
 		} else {
 			throw new Exception("error en el modificar-cliente");
 		}
@@ -48,7 +48,7 @@ public class ClienteServicio {
 	
 	@Transactional
 	public List<Cliente> listarTodos() {
-		return ClienteRepositorio.findAll();
+		return clienteRepositorio.findAll();
 	}
 	
 }

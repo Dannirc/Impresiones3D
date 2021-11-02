@@ -17,7 +17,7 @@ import com.EggEducacion.Impresiones3d.repositorios.PedidoRepositorio;
 @Service
 public class PedidoServicio {
 	@Autowired
-	private PedidoRepositorio PedidoRepositorio;
+	private PedidoRepositorio pedidoRepositorio;
 	
 	
 	@Transactional
@@ -27,19 +27,19 @@ public class PedidoServicio {
 		pedido.setProducto(producto);
 		pedido.setCliente(cliente);
 		pedido.setFecha(fecha);
-		return PedidoRepositorio.save(pedido);
+		return pedidoRepositorio.save(pedido);
 	}
 	
 	@Transactional
 	public void modificarPedido(String id, Producto producto, Cliente cliente, Date fecha) throws Exception {
-		Optional<Pedido> respuesta = PedidoRepositorio.findById(id);
+		Optional<Pedido> respuesta = pedidoRepositorio.findById(id);
 		if (respuesta.isPresent()) {
 			Pedido pedido = respuesta.get();
 			pedido.setId(id);
 			pedido.setProducto(producto);
 			pedido.setCliente(cliente);
 			pedido.setFecha(fecha);
-			PedidoRepositorio.save(pedido);
+			pedidoRepositorio.save(pedido);
 		} else {
 			throw new Exception("error en el modificar-pedido");
 		}
@@ -47,7 +47,7 @@ public class PedidoServicio {
 	
 	@Transactional
 	public List<Pedido> listarTodos() {
-		return PedidoRepositorio.findAll();
+		return pedidoRepositorio.findAll();
 	}
 	
 }

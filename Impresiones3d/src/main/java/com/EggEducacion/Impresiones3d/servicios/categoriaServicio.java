@@ -13,7 +13,7 @@ import com.EggEducacion.Impresiones3d.repositorios.CategoriaRepositorio;
 @Service
 public class CategoriaServicio {
 	@Autowired
-	private CategoriaRepositorio CategoriaRepositorio;
+	private CategoriaRepositorio categoriaRepositorio;
 
 	@Transactional
 	public Categoria crearCategoria(String id, String nombre, Integer porcentajeDeRelleno,
@@ -28,13 +28,13 @@ public class CategoriaServicio {
 		Categoria.setSoporte(soporte);
 		Categoria.setVelocidadDelImpresion(velocidadDelImpresion);
 		Categoria.setMaterial(material);
-		return CategoriaRepositorio.save(Categoria);
+		return categoriaRepositorio.save(Categoria);
 	}
 
 	@Transactional
 	public void modificarCategoria(String id, String nombre, Integer porcentajeDeRelleno, Integer velocidadDelImpresion,
 			Float diametroDeBoquita, String material, Float alturaDeCapa, Boolean soporte) throws Exception {
-		Optional<Categoria> respuesta = CategoriaRepositorio.findById(id);
+		Optional<Categoria> respuesta = categoriaRepositorio.findById(id);
 		if (respuesta.isPresent()) {
 			Categoria Categoria = respuesta.get();
 			Categoria.setId(id);
@@ -45,7 +45,7 @@ public class CategoriaServicio {
 			Categoria.setSoporte(soporte);
 			Categoria.setVelocidadDelImpresion(velocidadDelImpresion);
 			Categoria.setMaterial(material);
-			CategoriaRepositorio.save(Categoria);
+			categoriaRepositorio.save(Categoria);
 		} else {
 			throw new Exception("error en el modificar-Categoria");
 		}
@@ -53,7 +53,7 @@ public class CategoriaServicio {
 
 	@Transactional
 	public List<Categoria> listarTodos() {
-		return CategoriaRepositorio.findAll();
+		return categoriaRepositorio.findAll();
 	}
 
 }
