@@ -15,7 +15,7 @@ import com.EggEducacion.Impresiones3d.repositorios.CompraRepositorio;
 @Service
 public class CompraServicio {
 	@Autowired
-	private CompraRepositorio CompraRepositorio;
+	private CompraRepositorio compraRepositorio;
 	
 	
 	@Transactional
@@ -25,19 +25,19 @@ public class CompraServicio {
 		Compra.setPago(pago);
 		Compra.setPresupuesto(presupuesto);
 		Compra.setTerminado(terminado);
-		return CompraRepositorio.save(Compra);
+		return compraRepositorio.save(Compra);
 	}
 	
 	@Transactional
 	public void modificarCompra(String id, Presupuesto presupuesto, Boolean pago, Boolean terminado) throws Exception {
-		Optional<Compra> respuesta = CompraRepositorio.findById(id);
+		Optional<Compra> respuesta = compraRepositorio.findById(id);
 		if (respuesta.isPresent()) {
 			Compra Compra = respuesta.get();
 			Compra.setId(id);
 			Compra.setPago(pago);
 			Compra.setPresupuesto(presupuesto);
 			Compra.setTerminado(terminado);
-			CompraRepositorio.save(Compra);
+			compraRepositorio.save(Compra);
 		} else {
 			throw new Exception("error en el modificar-Compra");
 		}
@@ -45,7 +45,7 @@ public class CompraServicio {
 	
 	@Transactional
 	public List<Compra> listarTodos() {
-		return CompraRepositorio.findAll();
+		return compraRepositorio.findAll();
 	}
 	
 }
