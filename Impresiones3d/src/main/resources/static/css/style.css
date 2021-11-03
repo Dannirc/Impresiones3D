@@ -2031,3 +2031,28 @@ h4.m_11 {
 	margin: 10px 0;
  }
 }
+#autor{
+
+background-image: url("your-image-url.jpeg");
+
+background-position: center;
+
+background-size: cover; /*or contain */
+
+}
+
+body {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+.main {
+  flex: 1;
+}
+
+.footer {
+  width: 100%;
+  min-height: 300px;
+}
+
