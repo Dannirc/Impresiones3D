@@ -20,7 +20,7 @@ public class Pedido {
 	@OneToOne
 	private Producto producto;
 	@OneToOne
-	private Cliente cliente;
+	private Usuario usuario;
 	@Temporal(TemporalType.DATE)
 	private Date fecha;
 	
@@ -31,11 +31,11 @@ public class Pedido {
 	}
 
 
-	public Pedido(String id, Producto producto, Cliente cliente, Date fecha) {
+	public Pedido(String id, Producto producto, Usuario usuario, Date fecha) {
 		super();
 		this.id = id;
 		this.producto = producto;
-		this.cliente = cliente;
+		this.usuario = usuario;
 		this.fecha = fecha;
 	}
 
@@ -58,12 +58,12 @@ public class Pedido {
 		this.producto = producto;
 	}
 
-	public Cliente getCliente() {
-		return cliente;
+	public Usuario getCliente() {
+		return usuario;
 	}
 
-	public void setCliente(Cliente cliente) {
-		this.cliente = cliente;
+	public void setCliente(Usuario usuario) {
+		this.usuario = usuario;
 	}
 
 	public Date getFecha() {
@@ -76,7 +76,7 @@ public class Pedido {
 
 	@Override
 	public String toString() {
-		return "Pedido [cliente=" + cliente + ", fecha=" + fecha + "]";
+		return "Pedido [cliente=" + usuario + ", fecha=" + fecha + "]";
 	}
 	
 	

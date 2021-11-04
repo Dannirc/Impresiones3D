@@ -20,7 +20,6 @@ public class compraServicio {
 	
 	@Transactional
 	public Compra crearCompra(String id, Presupuesto presupuesto, Boolean pago, Boolean terminado) throws Exception {
-		validar(presupuesto, pago, terminado);
 		Compra Compra = new Compra();
 		Compra.setId(id);
 		Compra.setPago(pago);
@@ -47,25 +46,6 @@ public class compraServicio {
 	@Transactional
 	public List<Compra> listarTodos() {
 		return CompraRepositorio.findAll();
-	}
-	
-	public void validar(Presupuesto presupuesto, Boolean pago, Boolean terminado) throws Exception {
-
-		if (presupuesto == null) {
-			throw new Exception("Debe tener un presupuesto valido");
-		}
-		
-		if (pago == null) {
-			throw new Exception("Debe tener un pago valido");
-		}	
-		
-		if (terminado == null) {
-			throw new Exception("Debe tener un pago terminado valido");
-		}
-
-
-		
-
 	}
 	
 }

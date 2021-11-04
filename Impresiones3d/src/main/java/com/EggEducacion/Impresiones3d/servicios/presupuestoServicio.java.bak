@@ -20,7 +20,6 @@ public class presupuestoServicio {
 	
 	@Transactional
 	public Presupuesto crearPresupuesto(String id, Pedido pedido, Float precio, Integer plazoEntrega) throws Exception {
-		validar(pedido, precio, plazoEntrega);
 		Presupuesto presupuesto = new Presupuesto();
 		presupuesto.setId(id);
 		presupuesto.setPedido(pedido);
@@ -45,21 +44,6 @@ public class presupuestoServicio {
 	@Transactional
 	public List<Presupuesto> listarTodos() {
 		return presupuestoRepositorio.findAll();
-	}
-	
-	public void validar(Pedido pedido, Float precio, Integer plazoEntrega) throws Exception {
-
-		if (pedido == null) {
-			throw new Exception("Debe tener un pedido valido");
-		}
-		
-		if (precio == null) {
-			throw new Exception("Debe tener un precio valido");
-		}	
-		
-		if (plazoEntrega == null) {
-			throw new Exception("Debe tener un plazo de entrega valido");
-		}
 	}
 	
 }
