@@ -14,7 +14,18 @@ public class ClienteControlador {
 	}
 	
 	@GetMapping("/cargar-pedido")
-	public String Cotizador() {		
+	public String cotizador() {		
 		return ("cliente/cargarPedido");
 	}
+	
+	@GetMapping("/lista-pedidos")
+	public String listaPedidos() {		
+		return ("cliente/listaPedidos");
+	}
+	
+	@GetMapping("/lista-presupuestos")
+	public String listaPresupuestos() {		
+		return ("cliente/listaPresupuestos");
+	}
+	
 }

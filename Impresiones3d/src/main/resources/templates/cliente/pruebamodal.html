@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>IndigoSoft | Registrar Usuario</title>
+
+<!-- Google Font: Source Sans Pro -->
+<link rel="stylesheet"
+	href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&amp;display=fallback">
+<!-- Font Awesome -->
+<link rel="stylesheet"
+	href="../adminlte-3.0.4/plugins/fontawesome-free/css/all.min.css">
+<!-- Theme style -->
+<link rel="stylesheet" href="../adminlte-3.0.4/css/adminlte.min.css">
+
+<!-- header -->
+<!--   <link href="../css/bootstrap.css" rel="stylesheet"> -->
+<link href="../css/style.css" rel="stylesheet">
+<link href="../css/footer.css" rel="stylesheet">
+<link
+	href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800'
+	rel='stylesheet' type='text/css'>
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+<script src="../js/jquery.min.js"></script>
+<!-- <script src="/static/js/jquery.easydropdown.js"></script> -->
+<!--start slider -->
+<link rel="stylesheet" href="../css/fwslider.css" media="all">
+<script src="../js/jquery-ui.min.js"></script>
+<script src="../js/fwslider.js"></script>
+<!--end slider -->
+<script type="text/javascript">
+$('#myModal').on('shown.bs.modal', function () {
+  $('#myInput').trigger('focus')
+})
+	</script>
+</head>
+
+<body>
+	<div th:insert="layout/header :: nav"></div>
+	
+		<div class="container">
+		<div class="row vh-100 justify-content-center align-items-center">
+			<div class="col-auto bg-light p-5">
+				<div class="card card-primary">
+					<div class="card-header text-center">
+						<h3 class="card-title">Lista de Pedidos</h3>
+					</div>
+					<!-- /.card-header -->
+					<!-- form table -->
+					<table class="table" th:if="${customSwitch1 == checked}" id="table">
+						<thead>
+							<tr>
+								<th scope="col">Id</th>
+								<th scope="col">Fecha</th>
+								<th scope="col">Archivo</th>
+								<th scope="col">Acciones</th>
+							</tr>
+						</thead>
+						<tbody th:each="pedido: ${pedidos} ">
+							<!--       <tr th:if="${libro.alta == true}"> -->
+							<tr>
+								<td th:text="${pedido.id}"></td>
+								<td th:text="${pedido.fecha}"></td>
+								<td th:text="${pedido.fecha}"></td>
+								<td><a type="button"
+									th:href="@{/cliente/modificar-pedido?Id={id}(id=${libro.id})}"
+									class="btn btn-primary">Editar</a> <a type="button"
+									th:href="@{/pedido/baja-pedido?Id={id}(id=${libro.id})}"
+									class="btn btn-danger">Dar de baja</a></td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+		<!-- Modal -->
+		<!-- Button trigger modal -->
+		<button type="button" class="btn btn-primary" data-toggle="modal"
+			data-target="#exampleModal">Launch demo modal</button>
+
+		<!-- Modal -->
+		<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
+			aria-labelledby="exampleModalLabel" aria-hidden="true">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+						<button type="button" class="close" data-dismiss="modal"
+							aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+					<div class="modal-body">...</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-secondary"
+							data-dismiss="modal">Close</button>
+						<button type="button" class="btn btn-primary">Save
+							changes</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- footer -->
+		<div th:insert="layout/footer :: footer"></div>
+		<!-- jQuery -->
+		<script src="../adminlte-3.0.4/plugins/jquery/jquery.min.js"></script>
+		<!-- Bootstrap 4 -->
+		<script
+			src="../adminlte-3.0.4/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+		<!-- AdminLTE App -->
+		<script src="../adminlte-3.0.4/dist/js/adminlte.min.js"></script>
+</body>
+</html>
