@@ -1,13 +1,22 @@
 package com.EggEducacion.Impresiones3d.entidades;
 
+import java.io.Serializable;
+
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
 import org.hibernate.annotations.GenericGenerator;
 
+import com.EggEducacion.Impresiones3d.enums.Rol;
+
 @Entity
-public class Cliente {
+public class Usuario implements Serializable  {
+	
+	private static final long serialVersionUID = 6522896498689132123L;
+	
 	@Id
 	@GeneratedValue(generator = "uuid")
 	@GenericGenerator(name = "uuid", strategy = "uuid2") 
@@ -18,14 +27,15 @@ public class Cliente {
 	private String telefono;
 	private String clave;
 	
+	@Enumerated(EnumType.STRING)
+	private Rol rol;
 	
-	
-	public Cliente() {
+	public Usuario() {
 		super();
 	}
-
 	
-	public Cliente(String id, String nombre, String direccion, String email, String telefono, String clave) {
+
+	public Usuario(String id, String nombre, String direccion, String email, String telefono, String clave, Rol rol) {
 		super();
 		this.id = id;
 		this.nombre = nombre;
@@ -33,6 +43,19 @@ public class Cliente {
 		this.email = email;
 		this.telefono = telefono;
 		this.clave = clave;
+		this.rol = rol;
+	}
+
+	public Rol getRol() {
+		return rol;
+	}
+
+	public void setRol(Rol rol) {
+		this.rol = rol;
+	}
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
 	}
 
 
