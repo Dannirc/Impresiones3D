@@ -23,13 +23,12 @@ public class productoServicio {
 	private ArchivoServicio archivoServicio;
 	
 	@Transactional
-	public Producto crearProducto(MultipartFile file,String id, Categoria categoria) throws Exception {
+	public Producto crearProducto(Archivo file/*,String id*/, Categoria categoria) throws Exception {
 		validar(categoria);
 		Producto producto = new Producto();	
-		producto.setId(id);
+		//producto.setId(id);
 		producto.setCategoria(categoria);
-		Archivo archivo = archivoServicio.guardar(file);
-		producto.setArchivo(archivo);
+		producto.setArchivo(file);
 		return productoRepositorio.save(producto);
 	}
 	
@@ -56,6 +55,15 @@ public class productoServicio {
 	@Transactional
 	public List<Producto> listarTodos() {
 		return productoRepositorio.findAll();
+	}
+	
+	public Producto buscarPorId(String id) throws Exception {
+		Optional<Producto> respuesta = productoRepositorio.findById(id);
+		if (respuesta.isPresent()) {
+			return respuesta.get();
+		} else {
+			throw new Exception("error");
+		}
 	}
 	
 	public void validar(Categoria categoria) throws Exception {

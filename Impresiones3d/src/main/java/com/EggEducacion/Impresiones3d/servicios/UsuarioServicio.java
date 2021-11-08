@@ -119,5 +119,14 @@ public class UsuarioServicio implements UserDetailsService {
 		}
 
 	}
+	
+	@Transactional
+	public void eliminarUsuario(String id) {
+		Optional<Usuario> respuesta = usuarioRepositorio.findById(id);
+		if(respuesta.isPresent()) {
+			usuarioRepositorio.delete(respuesta.get());
+		}
+	}
+
 
 }

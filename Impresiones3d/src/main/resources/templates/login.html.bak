@@ -28,13 +28,8 @@
 			<div class="card">
 				<div class="card-body register-card-body">
 					<p class="login-box-msg">Loguearse!</p>
-					<div th:if="${error}!=null" class="card text-white bg-danger mb-3">
-						<div class="card-body">
-							<h5 class="card-title">Error</h5>
-							<p class="card-text" th:text="${error}"></p>
-						</div>
-					</div>
-					<form th:action="@{/logincheck}" method="post">
+
+					<form action="../../index.html" method="post">
 						<div class="input-group mb-3">
 							<input type="email" class="form-control" placeholder="Email" name="email">
 							<div class="input-group-append">
@@ -64,7 +59,7 @@
 
 
 
-					<a href="/usuario/registro" class="text-center">Registrarme</a>
+					<a href="/cliente/registrar" class="text-center">Registrarme</a>
 				</div>
 				<!-- /.form-box -->
 			</div><!-- /.card -->
