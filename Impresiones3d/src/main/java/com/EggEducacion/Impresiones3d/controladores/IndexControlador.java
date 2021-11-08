@@ -12,17 +12,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Controller
 @RequestMapping({"/", "/index"})
 public class IndexControlador {
-	
+
 	@GetMapping
 	public String index() {		
 		return ("index");
 	}
-	
-	//@GetMapping("/login")
-	//public String login() {		
-	//	return ("login");
-	//}
-	
+  
 	@GetMapping("/login")
 	public String login(HttpSession session, Authentication usuario, ModelMap modelo, @RequestParam(required = false) String error) {
 		try {
@@ -31,14 +26,14 @@ public class IndexControlador {
 			} else {
 				
 				if (error != null && !error.isEmpty()) {
-					modelo.addAttribute("error", "La dirección de mail o la contraseña que ingresó son incorrectas.");
+					modelo.addAttribute("error", "La direcciï¿½n de mail o la contraseï¿½a que ingresï¿½ son incorrectas.");
 				}
 				return "login";
 			}
 			
 		} catch (Exception e) {
 			if (error != null && !error.isEmpty()) {
-				modelo.addAttribute("error", "La dirección de mail o la contraseña que ingresó son incorrectas.");
+				modelo.addAttribute("error", "La direcciï¿½n de mail o la contraseï¿½a que ingresï¿½ son incorrectas.");
 			}
 			return "login";
 		}
@@ -54,5 +49,5 @@ public class IndexControlador {
 	public String prueba() {		
 		return ("usuario/prueba");
 	}
-	
+
 }
