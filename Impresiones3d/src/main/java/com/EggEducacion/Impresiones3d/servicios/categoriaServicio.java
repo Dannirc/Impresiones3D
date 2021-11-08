@@ -17,12 +17,11 @@ public class categoriaServicio {
 	private categoriaRepositorio CategoriaRepositorio;
 
 	@Transactional
-	public Categoria crearCategoria(String id, String nombre, Integer porcentajeDeRelleno,
+	public Categoria crearCategoria(String nombre, Integer porcentajeDeRelleno,
 			Integer velocidadDelImpresion, Float diametroDeBoquita, String material, Float alturaDeCapa,
 			Boolean soporte) throws Exception {
 		validar(nombre, porcentajeDeRelleno, velocidadDelImpresion, diametroDeBoquita, material, alturaDeCapa, soporte);
 		Categoria Categoria = new Categoria();
-		Categoria.setId(id);
 		Categoria.setNombre(nombre);
 		Categoria.setAlturaDeCapa(alturaDeCapa);
 		Categoria.setDiametroDeBoquita(diametroDeBoquita);
@@ -56,6 +55,15 @@ public class categoriaServicio {
 	@Transactional
 	public List<Categoria> listarTodos() {
 		return CategoriaRepositorio.findAll();
+	}
+	
+	public Categoria buscarPorId(String id) throws Exception {
+		Optional<Categoria> respuesta = CategoriaRepositorio.findById(id);
+		if (respuesta.isPresent()) {
+			return respuesta.get();
+		} else {
+			throw new Exception("error");
+		}
 	}
 	
 	public void validar(String nombre, Integer porcentajeDeRelleno, Integer velocidadDelImpresion,

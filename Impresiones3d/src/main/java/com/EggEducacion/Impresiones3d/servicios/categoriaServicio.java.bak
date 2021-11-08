@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.EggEducacion.Impresiones3d.entidades.Categoria;
+import com.EggEducacion.Impresiones3d.enums.Rol;
 import com.EggEducacion.Impresiones3d.repositorios.categoriaRepositorio;
 
 @Service
@@ -19,6 +20,7 @@ public class categoriaServicio {
 	public Categoria crearCategoria(String id, String nombre, Integer porcentajeDeRelleno,
 			Integer velocidadDelImpresion, Float diametroDeBoquita, String material, Float alturaDeCapa,
 			Boolean soporte) throws Exception {
+		validar(nombre, porcentajeDeRelleno, velocidadDelImpresion, diametroDeBoquita, material, alturaDeCapa, soporte);
 		Categoria Categoria = new Categoria();
 		Categoria.setId(id);
 		Categoria.setNombre(nombre);
@@ -54,6 +56,40 @@ public class categoriaServicio {
 	@Transactional
 	public List<Categoria> listarTodos() {
 		return CategoriaRepositorio.findAll();
+	}
+	
+	public void validar(String nombre, Integer porcentajeDeRelleno, Integer velocidadDelImpresion,
+			Float diametroDeBoquita, String material, Float alturaDeCapa, Boolean soporte) throws Exception {
+
+		if (porcentajeDeRelleno == null) {
+			throw new Exception("Debe tener un porcentaje de relleno valido");
+		}
+		
+		if (velocidadDelImpresion == null) {
+			throw new Exception("Debe tener una velocidad de impresion valida");
+		}	
+		
+		if (nombre == null || nombre.isEmpty() || nombre.contains("  ")) {
+			throw new Exception("Debe tener un nombre valido");
+		}
+
+		if (alturaDeCapa == null) {
+			throw new Exception("Debe tener una altura de capa valida");
+		}
+
+		if (material == null || material.isEmpty() || material.contains("  ")) {
+			throw new Exception("Debe tener un material valido");
+		}
+
+		if (diametroDeBoquita == null) {
+			throw new Exception("Debe tener un diametro valido");
+		}
+		
+		if (soporte == null) {
+			throw new Exception("Debe tener un soporte valido");
+		}
+		
+
 	}
 
 }

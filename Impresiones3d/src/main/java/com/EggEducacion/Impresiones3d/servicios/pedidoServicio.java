@@ -46,6 +46,15 @@ public class pedidoServicio {
 		}
 	}
 	
+	public Pedido buscarPorId(String id) throws Exception {
+		Optional<Pedido> respuesta = pedidoRepositorio.findById(id);
+		if (respuesta.isPresent()) {
+			return respuesta.get();
+		} else {
+			throw new Exception("error");
+		}
+	}
+	
 	@Transactional
 	public List<Pedido> listarTodos() {
 		return pedidoRepositorio.findAll();

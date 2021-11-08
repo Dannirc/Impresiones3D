@@ -24,7 +24,8 @@ public class productoServicio {
 	
 	@Transactional
 	public Producto crearProducto(MultipartFile file,String id, Categoria categoria) throws Exception {
-		Producto producto = new Producto();
+		validar(categoria);
+		Producto producto = new Producto();	
 		producto.setId(id);
 		producto.setCategoria(categoria);
 		Archivo archivo = archivoServicio.guardar(file);
@@ -55,6 +56,16 @@ public class productoServicio {
 	@Transactional
 	public List<Producto> listarTodos() {
 		return productoRepositorio.findAll();
+	}
+	
+	public void validar(Categoria categoria) throws Exception {
+
+		if (categoria == null) {
+			throw new Exception("Debe tener un porcentaje de relleno valido");
+		}
+
+		
+
 	}
 	
 }
